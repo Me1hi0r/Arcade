@@ -1,0 +1,130 @@
+{% extends 'arcade/main.html' %}
+{% block title %}
+  Player screen
+{% endblock title %}
+{% load static %}
+{% block head %}
+<script src="{% static '/arcade/lib/jsMQTT/mqttws31.js' %}"></script>
+{% endblock head %}
+{% block content %}
+  {% if NONE_PLAYER %}
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Приложите карту к детектору :</h2>
+      </div>
+    </div>
+  </div>
+  {% elif  NOT_EXIST %}
+  <div class="container">
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title">Либо такого пользователя нет, либо карта считана некорректно :</h2>
+            </div>
+    </div>
+  </div>
+  {% else %}
+  {% comment %} <div class="container"> {% endcomment %}
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title">Игрок: {{username}}    Баланс: {{balance }}</h2>
+
+      </div>
+    </div>
+  {% comment %} </div> {% endcomment %}
+  {% comment %} <div class="container"> {% endcomment %}
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Quest</th>
+        <th scope="col">Score</th>
+        <th scope="col">Play games</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ q1_name }}</td>
+        <td>{{ q1_score }}</td>
+        <td>{{ q1_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>{{ q2_name }}</td>
+        <td>{{ q2_score }}</td>
+        <td>{{ q2_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>{{ q3_name }}</td>
+        <td>{{ q3_score }}</td>
+        <td>{{ q3_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>{{ q4_name }}</td>
+        <td>{{ q4_score }}</td>
+        <td>{{ q4_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>{{ q5_name }}</td>
+        <td>{{ q5_score }}</td>
+        <td>{{ q5_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>{{ q6_name }}</td>
+        <td>{{ q6_score }}</td>
+        <td>{{ q6_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>{{ q7_name }}</td>
+        <td>{{ q7_score }}</td>
+        <td>{{ q7_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>{{ q8_name }}</td>
+        <td>{{ q8_score }}</td>
+        <td>{{ q8_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">9</th>
+        <td>{{ q9_name }}</td>
+        <td>{{ q9_score }}</td>
+        <td>{{ q9_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">10</th>
+        <td>{{ q10_name }}</td>
+        <td>{{ q10_score }}</td>
+        <td>{{ q10_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">11</th>
+        <td>{{ q11_name }}</td>
+        <td>{{ q11_score }}</td>
+        <td>{{ q11_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">12</th>
+        <td>{{ q12_name }}</td>
+        <td>{{ q12_score }}</td>
+        <td>{{ q12_games }}</td>
+      </tr>
+      <tr>
+        <th scope="row">13</th>
+        <td>{{ q13_name }}</td>
+        <td>{{ q13_score }}</td>
+        <td>{{ q13_games }}</td>
+      </tr>
+    </tbody>
+  </table>
+  {% comment %} </div> {% endcomment %}
+  {% endif %}
+{% endblock content %}

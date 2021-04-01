@@ -1,0 +1,45 @@
+{% extends 'arcade/main.html' %}
+{% block title %}
+Arcade
+{% endblock title %}
+
+{% block content %}
+<div class="container bg-dark" style="padding-top: 10vh;">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title text-center" id="card-title">Приложите карту:</h1>
+        <form
+              method='POST'
+              onsubmit="return validateForm()">
+          {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group mb-1">
+                    <input type="text" id="rfid" name="id_card" hidden readonly class="form-control-plaintext">
+                </div>
+            </div>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Имя:  </span>
+              </div>
+              <input type="text" id="name" name="username" class="form-control" onfocus="this.value=''; this.style.color ='#495057';">
+              <small id="username_help" class="form-text text-muted"></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon2">Баланс:</span>
+                  </div>
+                  <input type="text" id="balance" name="balance" class="form-control" onfocus="this.value=''; this.style.color ='#495057';">
+              </div>
+          </div>
+          <button type="submit" id="create_button" class="btn btn-outline-success btn-block"
+          >Создать/Изменить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

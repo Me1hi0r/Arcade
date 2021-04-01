@@ -1,0 +1,63 @@
+
+{% extends 'arcade/main.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static '/arcade/lib/jsMQTT/mqttws31.js' %}"></script>
+{% endblock head %}
+{% block title %}
+  Create Player
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="btn btn-primary btn-lg" href="/find" role="button">Изменить пользователя</a>
+  </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title">Создание нового игрока :</h2>
+
+        <form method='POST'>
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Имя игрока :  </span>
+              </div>
+              <input type="text" name="username" class="form-control" placeholder="{{ USER_NAME_TEXT }}">
+              <small id="username_help" class="form-text text-muted"></small>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">Баланс игрока :</span>
+              </div>
+              <input type="text" name="balance" class="form-control" placeholder="{{ USER_BALANCE_TEXT }} " value="0">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3" >Номер  карты : </span>
+              </div>
+              <input type="text" id="rfid" name="id_card" class="form-control">
+            </div>
+          </div>
+
+          <button type="submit" id="create_button" class="btn btn-primary btn-block"
+          >Создать игрока</button>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+{% endblock content %}
+
+{% block script %}
+
+{% endblock script %}

@@ -1,0 +1,93 @@
+
+{% extends 'arcade/main.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static '/arcade/lib/jsMQTT/mqttws31.js' %}"></script>
+{% endblock head %}
+{% block title %}
+  Create Player
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="btn btn-primary btn-lg" href="/create" role="button">Создать пользователя</a>
+  </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      {% if find %}
+
+      <div class="card-body">
+        <h2 class="card-title">Найти игрока :</h2>
+
+        <form method='GET'>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">По имени игрока :</span>
+              </div>
+              <input type="text" name="username" class="form-control" placeholder="{{ USER_NAME_TEXT }}">
+              <small id="username_help" class="form-text text-muted"></small>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3" >По номеру  карты : </span>
+              </div>
+              <input type="text" name="id_card" class="form-control" placeholder="{{ CARD_TEXT }}">
+            </div>
+          </div>
+
+          <button type="submit" id="create_button" class="btn btn-primary btn-block" onclic="document.querySelector('input[name=id_card]').disabled = false;">Найти игрока</button>
+        </form>
+      </div>
+    </div>
+          {% endif %}
+    {% if actions %}
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title">Изменения в профиле игрока :</h2>
+
+        <form method='POST'>
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Имя игрока :  </span>
+              </div>
+              <input type="text" name="username" class="form-control" placeholder="{{ USER_NAME_TEXT }}" disabled>
+              <small id="username_help" class="form-text text-muted"></small>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">Изменить баланс игрока :</span>
+              </div>
+              <input type="text" name="balance" class="form-control" placeholder="{{ USER_BALANCE_TEXT }} " value="{{balance}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3" >Привязать новую карту : </span>
+              </div>
+              <input type="text" name="id_card" class="form-control" placeholder="{{ CARD_TEXT }}" value="{{card}}"">
+            </div>
+          </div>
+
+          <button type="submit" id="change_button" class="btn btn-primary btn-block"  >Изменить профиль игрока</button>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+{% block script %}
+
+{% endblock script %}

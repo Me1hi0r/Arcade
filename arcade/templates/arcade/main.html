@@ -1,0 +1,26 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %} {% endblock head %}
+    <link rel="stylesheet" href="{% static '/arcade/lib/bootstrap/css/bootstrap.min.css' %}" >
+    <script src="{% static '/arcade/lib/jsMQTT/mqttws31.js' %}"></script>
+    <script src="{% static '/arcade/lib/jquery/js/jquery.min.js' %}"></script>
+    <script src="{% static '/arcade/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+    <title>
+    {% block title %} {% endblock title %}
+    </title>
+  </head>
+  <body class=" bg-dark">
+    {% block content %} {% endblock content %}
+
+
+
+    {% block script %} {% endblock script %}
+    <script src="{% static '/arcade/app.js' %}"></script>
+  </body>
+</html>
+ 
